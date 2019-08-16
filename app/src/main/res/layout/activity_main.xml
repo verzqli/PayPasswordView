@@ -4,9 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <com.verzqli.vmui.widget.PayPasswordView
+    
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="300dp"
+       android:background="#FF0000"/>
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="#861996CE">
+        
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/aa" />
+        
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+           />
+        
+        <com.verzqli.vmui.widget.QQBlurView
+            android:id="@+id/blur"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"/>
+        
+
+    </FrameLayout>
 </LinearLayout>

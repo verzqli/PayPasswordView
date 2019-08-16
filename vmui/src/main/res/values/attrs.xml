@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<declare-styleable name="VMUIEditTextWithDelete">
+    <attr name="deleteIcon" format="reference" />
+    <attr name="deleteIconWidth" format="dimension" />
+    <attr name="inputNumberType" format="enum">
+        <enum name="phone" value="0" />
+        <enum name="bankCard" value="1" />
+    </attr>
+</declare-styleable>
+</resources>
