@@ -139,7 +139,7 @@ public class QQblurManager {
                 } else {
                     mCache = (long) createBitmap.getByteCount();
                 }
-                createBitmap.eraseColor(0);
+                createBitmap.eraseColor(-1);
                 this.mCanvas.setBitmap(createBitmap);
                 int[] iArr = new int[2];
                 this.mRootView.getLocationInWindow(iArr);
@@ -268,7 +268,7 @@ public class QQblurManager {
         this.f343a = false;
     }
 
-    public void c() {
+    public void onDestroy() {
         Log.d("QQBlur", "onDestroy() called");
         if (this.isDrawing) {
             this.isDrawing = false;

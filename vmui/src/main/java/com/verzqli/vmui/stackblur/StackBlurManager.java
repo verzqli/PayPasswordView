@@ -27,6 +27,7 @@ package com.verzqli.vmui.stackblur;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.SystemClock;
 import android.support.v8.renderscript.RSRuntimeException;
 import android.util.Log;
@@ -55,7 +56,7 @@ public class StackBlurManager {
 
     public Bitmap process(int radius) {
         long start = SystemClock.uptimeMillis();
-        this._result = this._blurProcess.blur(this._image, (float) radius);
+        this._result = this._blurProcess.blur(this._image, 8);
         Log.i(TAG, "process: " + this._blurProcess + "=" + (SystemClock.uptimeMillis() - start) + " ms");
         return this._result;
     }

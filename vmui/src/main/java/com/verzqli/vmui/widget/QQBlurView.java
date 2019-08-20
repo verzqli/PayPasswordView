@@ -1,15 +1,19 @@
 package com.verzqli.vmui.widget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.verzqli.vmui.R;
 import com.verzqli.vmui.widget.blur.BlurPreDraw;
 import com.verzqli.vmui.widget.blur.QQblurManager;
 import com.verzqli.vmui.widget.blur.Unkonow1;
@@ -31,6 +35,7 @@ public class QQBlurView extends View {
     /* renamed from: a */
     private boolean mEnableBlur = true;
 
+    public static Bitmap testBitmap;
     public QQBlurView(Context context) {
         super(context);
         init();
@@ -51,6 +56,7 @@ public class QQBlurView extends View {
         paint=new Paint();
         paint.setColor(Color.BLACK);
         paint.setTextSize(100);
+        testBitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.bb);
     }
 
     protected void onDraw(Canvas canvas) {
@@ -90,7 +96,7 @@ public class QQBlurView extends View {
 
     public void c() {
         getViewTreeObserver().removeOnPreDrawListener(this.mBlurPrewDraw);
-        this.mManager.c();
+        this.mManager.onDestroy();
     }
 
     public void a(View view) {
@@ -119,7 +125,7 @@ public class QQBlurView extends View {
     }
 
     public void a(int i) {
-        this.mManager.a(i);
+        this.mManager.setRaius(i);
     }
 
     public void setDirtyListener(Unkonow1 azld) {
@@ -168,4 +174,27 @@ public class QQBlurView extends View {
     public void setImageView(ImageView imageView) {
         this.imageView =imageView;
     }
+
+    float moveX;
+    float moveY;
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                moveX = event.getX();
+                moveY = event.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                setTranslationX(getX() + (event.getX() - moveX));
+                setTranslationY(getY() + (event.getY() - moveY));
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                break;
+        }
+
+        return true;
+    }
+
+
 }
